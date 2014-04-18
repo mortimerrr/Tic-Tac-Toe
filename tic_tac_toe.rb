@@ -16,6 +16,7 @@ class Board
   #
 	def mark(x, y, marker)	
       @board[x][y] = marker  
+      # binding.pry
 	end
 	# TODO - Have the board return each of the possible winning combinations.
 	#
@@ -52,9 +53,14 @@ class Game
 			prompt = "> > >"
 			print "#{prompt}   "
 			x, y = gets.strip.chomp.split (",")
-binding.pry
+			x = x.to_i
+			x = x - 1
+			y = y.to_i
+			y = y - 1
 			# 3. Mark the board on the given square. If the input is invalid or already
 			# taken, go back to 1.
+			@board.mark(x, y, @turn.marker)
+			puts @board.to_s
 			# 4. If we've got a winner, show the board and show a congratulations method.
 			# 5. Otherwise call next_turn and repeat.
 			# 6. How to detect a draw?
