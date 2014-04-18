@@ -1,5 +1,7 @@
 require 'pry'
 
+puts "\n * * * WELCOME TO THE GAME OF TIC-TAC-TOE * * *"
+
 class Board
 	def initialize
 		@board = [
@@ -12,11 +14,12 @@ class Board
   # TODO - Add code so that the array at co-ordinate x, y is set to the value
   # of marker, unless it has already been set.
   #
-	def mark(x, y, marker)
+	def mark(x, y, marker)	
+      @board[x][y] = marker  
 	end
-
 	# TODO - Have the board return each of the possible winning combinations.
 	#
+
 	def each_winning_move
 	end
 
@@ -39,9 +42,17 @@ class Game
 	#
 	def play
 		# While the game is still going on, do the following:
+			puts "\n * * * PLEASE SEE THE BOARD BELOW"
 			# 1. Show the board to the user
 			puts @board.to_s
 			# 2. Prompt for an co-ordinate on the Board that we want to target
+			puts "\n * * * PLAYER #{@turn} CHOOSE YOUR CO-ORDINATES WHERE YOU WANT TO PUT YOUR SIGN"
+			puts " * * * YOUR ANSWER SHOULD BE IN THE FOLLOWING FORMAT: 2, 3 "
+			puts " * * * YOUR MARKER WILL BE PUT IN LINE 2, THIRD PLACE FROM LEFT"
+			prompt = "> > >"
+			print "#{prompt}   "
+			x, y = gets.strip.chomp.split (",")
+binding.pry
 			# 3. Mark the board on the given square. If the input is invalid or already
 			# taken, go back to 1.
 			# 4. If we've got a winner, show the board and show a congratulations method.
@@ -81,3 +92,5 @@ class Cross < Player
 end
 
 Game.new.play
+
+# binding.pry
