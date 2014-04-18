@@ -23,7 +23,9 @@ class Board
 	# TODO - Add code to return the board as a String, so that it appears
 	# in a 3 x 3 grid
 	def to_s
+	  @board.map {|row| row.join(" ")}.join("\n")
 	end
+
 end
 
 class Game
@@ -38,6 +40,7 @@ class Game
 	def play
 		# While the game is still going on, do the following:
 			# 1. Show the board to the user
+			puts @board.to_s
 			# 2. Prompt for an co-ordinate on the Board that we want to target
 			# 3. Mark the board on the given square. If the input is invalid or already
 			# taken, go back to 1.
