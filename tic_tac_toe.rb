@@ -51,26 +51,30 @@ class Game
 	# TODO - The main game loop goes in here.
 	#
 	def play
-		# While the game is still going on, do the following:
-		puts "\n * * * PLEASE SEE THE BOARD BELOW"
-		# 1. Show the board to the user
-		puts @board.to_s
-		# 2. Prompt for an co-ordinate on the Board that we want to target
-		x, y = get_user_move
+		9.times do # 9 possible moves
+			# While the game is still going on, do the following:
+			puts "\n * * * PLEASE SEE THE BOARD BELOW"
+			# 1. Show the board to the user
+			puts @board.to_s
+			# 2. Prompt for an co-ordinate on the Board that we want to target
+			x, y = get_user_move
 
-		# 3. Mark the board on the given square. If the input is invalid or already
-		# taken, go back to 1.
-		@board.mark(x, y, @turn.marker)
-		puts @board.to_s
-		# 4. If we've got a winner, show the board and show a congratulations method.
-		if winner
-		  puts @board.to_s
-		  puts "Well done, you have won!!!"
-		end			
-		# 5. Otherwise call next_turn and repeat.
-		next_turn
-
-		# 6. How to detect a draw? (if there are no moves left and there are no winning moves)
+			# 3. Mark the board on the given square. If the input is invalid or already
+			# taken, go back to 1.
+			@board.mark(x, y, @turn.marker)
+			puts @board.to_s
+			# 4. If we've got a winner, show the board and show a congratulations method.
+			if winner
+			  puts @board.to_s
+			  puts "Well done, you have won!!!"
+			  return
+			end			
+			# 5. Otherwise call next_turn and repeat.
+			@turn = next_turn
+			# 6. How to detect a draw? (if there are no moves left and there are no winning moves)
+			# puts "! ! ! IT'S A DRAW ! ! !"
+		end
+			puts "! ! ! IT'S A DRAW ! ! !"
 	end
 
 	def get_user_move
@@ -97,7 +101,8 @@ class Game
   #
 	def next_turn
 		# get_user_move
-		get_user_move
+		# set the @turn to be the other player
+		@turn == Nought ? Cross : Nought
 	end
 
 	# TODO - Return the winning Class if they have won, otherwise return nil.
