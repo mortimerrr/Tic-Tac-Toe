@@ -22,12 +22,7 @@ class Board
 		
 		for i in 0..2
 		  	yield @board[i]
-		end
-
-		for i in 0..2
-		  for j in 0..2
-		  	yield @board[i][j]
-		  end
+		  	yield [@board[0][i], @board[1][i], @board[2][i]]
 		end
 
 		yield [@board[0][0], @board[1][1], @board[2][2]]
